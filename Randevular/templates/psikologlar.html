@@ -6,9 +6,10 @@
 Psikologlarımız
 {% endblock title %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'psikologlar.css' %}">
-{% endblock extra_css %}
+
+{% block extra_head %}
+<link href="{% static 'psikologlar.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 <div class="container">
