@@ -1,0 +1,73 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block title %}Randevu Al - Psyora{% endblock %}
+
+{% block extra_head %}
+<link href="{% static 'static/Randevu.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="p-4 bg-white rounded shadow-sm">
+    <h2 class="mb-3">Randevu Oluştur</h2>
+    <p class="text-muted mb-4">
+        Uzman psikologlarımızdan biriyle sizin için en uygun zaman diliminde görüşme planlayın.
+    </p>
+
+    <form method="post" class="row g-3">
+        {% csrf_token %}
+
+        <!-- Ad Soyad -->
+        <div class="col-md-6">
+            <label class="form-label">Ad Soyad</label>
+            <input type="text" name="fullname" class="form-control" placeholder="Adınızı girin" required>
+        </div>
+
+        <!-- E-posta -->
+        <div class="col-md-6">
+            <label class="form-label">E-posta</label>
+            <input type="email" name="email" class="form-control" placeholder="ornek@mail.com" required>
+        </div>
+
+        <!-- Telefon -->
+        <div class="col-md-6">
+            <label class="form-label">Telefon</label>
+            <input type="text" name="phone" class="form-control" placeholder="05xx xxx xx xx" required>
+        </div>
+
+        <!-- Psikolog seçimi -->
+        <div class="col-md-6">
+            <label class="form-label">Psikolog Seçin</label>
+            <select name="psychologist" class="form-select" required>
+                <option selected disabled>Bir psikolog seçin</option>
+                <option>Dr. Ayşe Demir</option>
+                <option>Uzm. Psikolog Fatih Yılmaz</option>
+                <option>Uzm. Klinik Psikolog Selin Kara</option>
+            </select>
+        </div>
+
+        <!-- Tarih -->
+        <div class="col-md-6">
+            <label class="form-label">Tarih</label>
+            <input type="date" name="date" class="form-control" required>
+        </div>
+
+        <!-- Saat -->
+        <div class="col-md-6">
+            <label class="form-label">Saat</label>
+            <input type="time" name="time" class="form-control" required>
+        </div>
+
+        <!-- Açıklama -->
+        <div class="col-12">
+            <label class="form-label">Konu / Açıklama</label>
+            <textarea class="form-control" name="message" rows="3" placeholder="Kısaca belirtmek isterseniz..." ></textarea>
+        </div>
+
+        <!-- Gönder -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Randevu Oluştur</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
